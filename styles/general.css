@@ -1,0 +1,421 @@
+:root {
+/* Backgrounds */
+  --bg-main: #121212;
+  --bg-panel: #1E1E1E;
+  --bg-card: #2A2A2A;
+
+  /* Text */
+  --text-primary: #E0E0E0;
+  --text-secondary: #AAAAAA;
+
+  /* Gold Accent */
+  --gold: rgb(235, 207, 132);
+  --gold-glow: rgba(241, 196, 15, 0.4);
+
+  /* Shadows */
+  --shadow-dark: rgba(0,0,0,0.5);
+  --shadow-gold: rgba(241,196,15,0.3);
+}
+ 
+ 
+ 
+ 
+ /* Reset some default browser spacing and properties
+  this can be overridden due to inheritance */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, Arial;
+  }
+
+
+html {
+  color-scheme: light, dark;
+  scroll-behavior: smooth;
+}
+
+p {
+  color: white;
+}
+
+img, picture, svg {
+  max-width: 100%;
+  display: block;
+}
+
+
+
+                      /* BODY */
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, Arial, system-ui;
+}
+
+body {
+  /* background-color: rgb(83, 63, 46); */
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+}
+
+.main {
+  flex: 1;
+  width: min(60ch, 100% - 4rem);
+  margin-inline: auto;
+}
+
+section {
+  /* Scroll margin top allows for the height of the header to be accounted for. */
+  scroll-margin-top: 100px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+
+
+
+                        /* INTRO SECTION */
+
+.about-me-container {
+  background-color: var(--bg-panel);
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 6px 20px var(--shadow-dark);
+  
+  margin:auto;
+  margin-top: 20px;
+
+  min-width: 450px;
+  max-width: 680px;
+}
+
+.about-me-container {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 2s ease forwards;
+}
+
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.about-me-text h2{
+  color: var(--gold); /* soft yellow to match glows and style */
+}
+
+.about-me-text p{
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary); /* softer white */
+  margin-bottom: 20px;
+
+  max-width: 800px;
+}
+
+
+/* Make img circular and add a ring/glow */
+.intro-photo-container img {
+  width: 200px;
+  height: auto;
+  max-width: 100%;
+  min-width: 120px;
+  object-fit: cover;
+  border-radius: 50%; /* makes it circular */
+  border: 2px solid var(--gold); /* subtle highlight */
+  box-shadow: 0 4px 15px var(--gold-glow); /* glow effect */
+  transition: all 0.3s ease;
+  opacity: 0.95;
+}
+
+/* increase size on hover and opacity slightly */
+.intro-photo-container img:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+
+
+/* Adjust for smaller screen size */
+@media (max-width: 768px) {
+  .about-me-container {
+
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .about-me-text {
+    max-width: 90%;
+  }
+
+  .intro-photo-container img {
+    width: 120px;
+    height: auto;
+  }
+
+  .about-me-text {
+    max-width: 90%;
+  }
+}
+
+
+
+
+                        /* PROJECTS SECTION */
+
+
+.projects {
+  padding: 40px 20px;
+  margin: 0 auto; /* margin: top&bottom, left&right */
+  max-width:1200px;
+
+  border-color:rgb(32, 32, 32);
+  border-bottom-style: solid;
+
+}
+
+.projects {
+  opacity: 0;
+  transform: translateY(100px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.projects-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns:repeat(2, 1fr);
+  column-gap: 16px;
+  row-gap: 40px;
+
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.project-card {
+  /* background-color: rgb(255, 245, 232); */
+  background-color: var(--bg-card);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height:auto;
+  border-radius: 4px;
+  gap: 20px;
+  padding: 20px;
+  border-color: rgb(1, 11, 19);
+  border-style: solid;
+  border-width: 20px;
+  
+  align-items: center;
+  transition: all 0.2s ease; /* transition types when hovered activated*/
+  overflow: hidden; 
+}
+
+
+
+/* animated glow pulse */
+@keyframes project-card-glow {
+  /* 0% is at the start of the animation */
+  0% {
+    /* 0 0 4px → horizontal offset 0px, vertical offset 0px, blur radius 4px, rgba (colour values) */
+    box-shadow: 0 0 4px var(--gold-glow);
+  }
+  100% {
+    box-shadow: 0 0 20px var(--gold-glow);
+  }
+}
+
+
+.project-card:hover {
+  transform: translateY(-5px); /* subtle lift when hovering */
+
+  animation: project-card-glow 1s infinite alternate;
+  box-shadow: 0 0px 20px var(--gold-glow); /* box shadow color and opacity*/
+}
+
+
+@media (max-width: 768px) {
+  /* Applies styles when screen width is <=768px 
+  great for resized windows or smaller screen i.e. mobile */
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.project-image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-image {
+  width: 100%;
+  /* height: 100%; */
+  object-fit: cover;
+}
+
+
+.project-info-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+}
+
+.project-title {
+  color: var(--gold);
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.project-author, .project-description {
+  font-size: 12px;
+  color: var(--text-secondary)
+}
+
+.profile-picture {
+  width: 36px;
+  border-radius: 16px;
+}
+
+
+                        /* TECHNOLOGIES AND TOOLS SECTION */
+
+
+.technologies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 20px;
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+}
+
+.technologies h2{
+  font-size: 28px;
+  margin-bottom: 8px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.technologies p {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+ .technologies-icons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+ }
+ 
+ .tech-item {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   perspective: 600px; /* Changes perspective point of element. This allows 3D transform effects*/
+ }
+
+
+ .icon-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .icon-wrapper img {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+  transform: transform 0.3s ease;
+ }
+
+/* Hover Effects */
+.icon-wrapper:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 20px var(--gold-glow);
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background-color: var(--gold);
+  color: #111;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
+
+/* move tooltip up when hovered, looks more modular and seems larger */
+.icon-wrapper:hover .tooltip {
+  opacity: 1;
+}
+
+
+
+
+/* animated glow pulse */
+@keyframes skills-glow {
+  /* 0% is at the start of the animation */
+  0% {
+    /* 0 0 4px → horizontal offset 0px, vertical offset 0px, blur radius 4px, rgba (colour values) */
+    box-shadow: 0 0 4px rgba(245, 228, 183, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(245, 228, 183, 0.6);
+  }
+}
+
+/* is accessor has been used previously but this is 
+showing that we are accessing this elements specifically for the animation */
+.icon-wrapper:hover img {
+  animation: skills-glow 0.8s infinite alternate;
+}

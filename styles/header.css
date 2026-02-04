@@ -1,0 +1,115 @@
+ 
+
+/* the general header that contains EVERYTHING about the header in it */
+.site-header {
+    /* background-color: rgba(23, 21, 17, 0.75); */
+    background-color: #1A1A1A;
+    backdrop-filter: blur(6px);
+
+    
+    
+    height: 100px; /* height of the header div */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    position: fixed; /* fixed will attach the element to the browser window even when scrolling. */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; /* Keep the index high so that this element is ALWAYS on top*/
+    
+    border-bottom-style: solid;
+    border-bottom-color: gray;
+    border-bottom-width: 1px;
+}
+
+/* the general container of the actual contents*/
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+.left-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px
+}
+
+/* Logo / Name */
+.left-section h1 {
+
+    width:100%;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.left-section .tagline {
+    flex-direction: column;
+    font-size: 14px;
+    width: 100%;
+    color: #aaa;
+}
+
+.left-section .bryan-logo {
+  height: 50px;
+  margin-top: 4px;
+}
+
+
+                /* Navigation */
+.nav_bar {
+  display: flex;
+  align-items: center;
+}
+
+
+/* This is another container for list items */
+.nav_list {
+  display: flex;
+  column-gap: 40px;
+  /* gap: 40px; gap between ul elements */
+  list-style: none;
+  position: relative;
+}
+
+/* This is the actual clickable text that we can style */
+.nav_link {
+  text-decoration: none;
+  /* color: rgb(255,255,255,0.65); */
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.nav_link:hover {
+    color: var(--gold);
+  opacity: 1;
+}
+
+.nav_link::after {
+  content: '';
+  height: 3px;
+  width: 100%;
+  background-color:var(--gold);
+  position:absolute;
+  left: 0px;
+  bottom: -20px;
+  opacity: 0;
+  transition: inherit;
+  pointer-events: none;
+}
+
+.nav_link:hover::after
+{
+  opacity: inherit;
+}

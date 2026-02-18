@@ -199,8 +199,6 @@ a {
   max-width:1200px;
 
   border-color:rgb(32, 32, 32);
-  border-bottom-style: solid;
-
 }
 
 .projects {
@@ -303,6 +301,9 @@ a {
   color: var(--text-secondary)
 }
 
+.project-author {
+  color: var(--gold)
+}
 .profile-picture {
   width: 36px;
   border-radius: 16px;
